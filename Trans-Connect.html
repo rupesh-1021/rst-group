@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="RST Logo.jpeg" type="image/jpeg">
+    <title>RST Trans Connect | Smart Logistics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+        
+        body { font-family: 'Inter', system_ui, sans-serif; }
+        .heading-font { font-family: 'Playfair Display', sans-serif; }
+        
+        .truck-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .truck-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- HEADER -->
+    <header class="bg-white border-b sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <a href="Home.html" class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-blue-900 rounded-2xl flex items-center justify-center text-white text-2xl font-bold">RST</div>
+                    <div>
+                        <span class="font-bold text-2xl">Trans Connect</span>
+                    </div>
+                </a>
+            </div>
+            
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#services" class="hover:text-amber-600">Services</a>
+                <a href="#book" class="hover:text-amber-600">Book Truck</a>
+                <a href="#calculator" class="hover:text-amber-600">Calculators</a>
+                <a href="#ai" class="hover:text-amber-600">AI Logistics</a>
+                <a href="#contact" class="hover:text-amber-600">Contact</a>
+            </nav>
+            
+            <a href="Home.html" class="text-blue-900 hover:text-amber-600 font-medium flex items-center gap-2">
+                <i class="fas fa-arrow-left"></i> Back to RST Group
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="bg-gradient-to-br from-blue-900 to-blue-800 text-white py-24">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h1 class="text-6xl font-bold heading-font mb-6">Intelligent Logistics,<br>Delivered Fast</h1>
+            <p class="text-2xl max-w-2xl mx-auto text-blue-100">AI-Powered Transportation • Real-time Tracking • Pan-India Network</p>
+            <div class="mt-10">
+                <a href="#book" class="inline-flex items-center gap-3 bg-amber-500 hover:bg-amber-600 text-blue-950 font-bold text-xl px-10 py-5 rounded-3xl">
+                    <i class="fas fa-truck-fast"></i> BOOK A TRUCK NOW
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-center text-5xl font-bold heading-font mb-16">Our Services</h2>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-20 h-20 mx-auto bg-amber-100 rounded-2xl flex items-center justify-center text-4xl mb-6">🚛</div>
+                    <h3 class="font-semibold text-xl">Full Truck Load (FTL)</h3>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 mx-auto bg-amber-100 rounded-2xl flex items-center justify-center text-4xl mb-6">📦</div>
+                    <h3 class="font-semibold text-xl">Less Than Truck Load (LTL)</h3>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 mx-auto bg-amber-100 rounded-2xl flex items-center justify-center text-4xl mb-6">🏭</div>
+                    <h3 class="font-semibold text-xl">Warehousing</h3>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 mx-auto bg-amber-100 rounded-2xl flex items-center justify-center text-4xl mb-6">🤖</div>
+                    <h3 class="font-semibold text-xl">AI Logistics</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUCK BOOKING + CALCULATOR -->
+    <section id="book" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Booking Form -->
+                <div class="bg-white rounded-3xl p-10 shadow-xl">
+                    <h2 class="text-4xl font-bold mb-8">Book Your Truck</h2>
+                    <form id="booking-form" class="space-y-6">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">From</label>
+                                <input type="text" id="from" placeholder="Chennai" class="w-full px-5 py-4 border rounded-2xl">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">To</label>
+                                <input type="text" id="to" placeholder="Bangalore" class="w-full px-5 py-4 border rounded-2xl">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Truck Type</label>
+                            <select id="truck-type" class="w-full px-5 py-4 border rounded-2xl">
+                                <option value="small">Small (1 Ton) - ₹8/km</option>
+                                <option value="medium">Medium (5 Ton) - ₹14/km</option>
+                                <option value="large">Large (10+ Ton) - ₹22/km</option>
+                            </select>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Weight (kg)</label>
+                                <input type="number" id="weight" value="2500" class="w-full px-5 py-4 border rounded-2xl">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Distance (km)</label>
+                                <input type="number" id="distance" value="320" class="w-full px-5 py-4 border rounded-2xl">
+                            </div>
+                        </div>
+                        
+                        <button type="button" onclick="calculateAndBook()" 
+                                class="w-full bg-gradient-to-r from-blue-900 to-amber-600 text-white py-6 rounded-3xl font-bold text-xl">
+                            CALCULATE &amp; BOOK
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Live Result -->
+                <div id="result-panel" class="hidden bg-white rounded-3xl p-10 shadow-xl border border-amber-200">
+                    <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                        <i class="fas fa-check-circle text-green-500"></i> Booking Summary
+                    </h3>
+                    <div id="fare-result" class="space-y-6"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI LOGISTICS -->
+    <section id="ai" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-5xl font-bold heading-font mb-4">AI-Powered Logistics Management</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">Our intelligent system optimizes routes, predicts delays, and manages your entire supply chain.</p>
+            
+            <div class="mt-16 bg-gray-900 text-white rounded-3xl p-12 max-w-3xl mx-auto">
+                <div class="flex justify-center gap-8 text-6xl mb-8">
+                    <i class="fas fa-brain"></i>
+                    <i class="fas fa-map-marked-alt"></i>
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <p class="text-2xl font-medium">"Your shipment is currently 12 minutes ahead of schedule. ETA: 4:45 PM"</p>
+                <button onclick="simulateAI()" 
+                        class="mt-10 px-8 py-4 bg-amber-500 text-black font-bold rounded-2xl">
+                    Talk to AI Agent →
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-blue-950 text-gray-300 py-12">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-sm">© 2026 RST Trans Connect Pvt Ltd • A Subsidiary of RST Group</p>
+        </div>
+    </footer>
+
+    <script>
+        function calculateAndBook() {
+            const type = document.getElementById('truck-type').value;
+            const weight = parseFloat(document.getElementById('weight').value) || 0;
+            const distance = parseFloat(document.getElementById('distance').value) || 0;
+            
+            let rate = 0;
+            let name = '';
+            
+            if (type === 'small') { rate = 15; name = 'Small Truck (1T)'; }
+            else if (type === 'medium') { rate = 25; name = 'Medium Truck (5T)'; }
+            else { rate = 45; name = 'Large Truck (10T+)'; }
+            
+            const fare = Math.round(rate * distance);
+            
+            const html = `
+                <div class="text-center">
+                    <p class="text-5xl font-bold text-amber-600">₹${fare}</p>
+                    <p class="text-sm text-gray-500">Estimated Fare</p>
+                </div>
+                <div class="grid grid-cols-2 gap-8 mt-8 text-left">
+                    <div><strong>Truck:</strong> ${name}</div>
+                    <div><strong>Distance:</strong> ${distance} km</div>
+                    <div><strong>Weight:</strong> ${weight} kg</div>
+                    <div><strong>From → To:</strong> ${document.getElementById('from').value} → ${document.getElementById('to').value}</div>
+                </div>
+                <button onclick="confirmBooking()" 
+                        class="mt-10 w-full bg-green-600 hover:bg-green-700 py-5 rounded-2xl text-white font-bold">
+                    CONFIRM BOOKING
+                </button>
+            `;
+            
+            document.getElementById('fare-result').innerHTML = html;
+            document.getElementById('result-panel').classList.remove('hidden');
+        }
+        
+        function confirmBooking() {
+            alert("🎉 Booking Confirmed!\n\nYour truck has been assigned. Tracking link sent to your registered mobile.");
+        }
+        
+        function simulateAI() {
+            alert("🤖 AI Agent: Good afternoon! Your consignment from Chennai to Bangalore is on route NH48. Current fuel efficiency is optimal. Any assistance needed?");
+        }
+        
+        // Tailwind ready
+    </script>
+</body>
+</html>
