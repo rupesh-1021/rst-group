@@ -4,175 +4,295 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="RST Logo.jpeg" type="image/jpeg">
-    <title>RST Trans Connect | Smart Logistics</title>
+    <title>Neural Logistics Ltd</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&family=Space+Grotesk:wght@500;600;700&display=swap');
         
-        body { font-family: 'Inter', system_ui, sans-serif; }
-        .heading-font { font-family: 'Playfair Display', sans-serif; }
-        
-        .truck-card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        body { 
+            font-family: 'Inter', system_ui, sans-serif; 
         }
-        .truck-card:hover {
-            transform: scale(1.05);
+        .heading-font { 
+            font-family: 'Space Grotesk', sans-serif; 
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, #0a1428 0%, #1e3a8a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(234, 179, 8, 0.15) 0%, transparent 50%);
+            animation: pulse 8s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        .neon-text {
+            text-shadow: 0 0 20px rgb(234 179 8);
+        }
+
+        .truck-card {
+            transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        .truck-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-animate {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        .section-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .input-focus {
+            transition: all 0.3s ease;
+        }
+        .input-focus:focus {
+            box-shadow: 0 0 0 4px rgba(234, 179, 8, 0.3);
+            border-color: #eab308;
         }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-zinc-950 text-white">
 
     <!-- HEADER -->
-    <header class="bg-white border-b sticky top-0 z-50 shadow-sm">
+    <header class="bg-black/80 border-b border-amber-500/20 sticky top-0 z-50 backdrop-blur-xl">
         <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <a href="Home.html" class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-blue-900 rounded-2xl flex items-center justify-center text-white text-2xl font-bold">RST</div>
-                    <div>
-                        <span class="font-bold text-2xl">Trans Connect</span>
+                <a href="#" class="flex items-center gap-3">
+                    <div class="w-11 h-11 bg-gradient-to-br from-amber-400 to-yellow-600 rounded-2xl flex items-center justify-center text-black text-3xl font-bold shadow-lg">NL</div>
+                    <div class="heading-font">
+                        <span class="font-bold text-3xl tracking-tighter">NEURAL LOGISTICS</span>
                     </div>
                 </a>
             </div>
             
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-                <a href="#services" class="hover:text-amber-600">Services</a>
-                <a href="#book" class="hover:text-amber-600">Book Truck</a>
-                <a href="#calculator" class="hover:text-amber-600">Calculators</a>
-                <a href="#ai" class="hover:text-amber-600">AI Logistics</a>
-                <a href="#contact" class="hover:text-amber-600">Contact</a>
+            <nav class="hidden md:flex items-center gap-10 text-sm font-medium">
+                <a href="#services" class="hover:text-amber-400 transition-colors">SERVICES</a>
+                <a href="#book" class="hover:text-amber-400 transition-colors">BOOK NOW</a>
+                <a href="#warehouse" class="hover:text-amber-400 transition-colors">WAREHOUSES</a>
+                <a href="#ai" class="hover:text-amber-400 transition-colors">NEURAL AI</a>
             </nav>
-            
-            <a href="Home.html" class="text-blue-900 hover:text-amber-600 font-medium flex items-center gap-2">
-                <i class="fas fa-arrow-left"></i> Back to RST Group
-            </a>
+
+            <div class="flex items-center gap-4">
+                <div class="px-4 py-2 bg-emerald-500/10 text-emerald-400 text-xs font-mono rounded-full border border-emerald-500/30 flex items-center gap-2">
+                    <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                    LIVE NETWORK
+                </div>
+                <a href="#" class="bg-white text-black px-6 py-3 rounded-2xl font-semibold text-sm hover:bg-amber-400 transition-all">CLIENT PORTAL</a>
+            </div>
         </div>
     </header>
 
     <!-- HERO -->
-    <section class="bg-gradient-to-br from-blue-900 to-blue-800 text-white py-24">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h1 class="text-6xl font-bold heading-font mb-6">Intelligent Logistics,<br>Delivered Fast</h1>
-            <p class="text-2xl max-w-2xl mx-auto text-blue-100">AI-Powered Transportation • Real-time Tracking • Pan-India Network</p>
-            <div class="mt-10">
-                <a href="#book" class="inline-flex items-center gap-3 bg-amber-500 hover:bg-amber-600 text-blue-950 font-bold text-xl px-10 py-5 rounded-3xl">
-                    <i class="fas fa-truck-fast"></i> BOOK A TRUCK NOW
+    <section class="hero-bg py-32 relative section-animate">
+        <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+            <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-2 rounded-3xl mb-6 border border-white/20">
+                <span class="text-amber-400">●</span>
+                <span class="text-sm font-medium tracking-widest">DIESEL POWERED • AI OPTIMIZED</span>
+            </div>
+            
+            <h1 class="text-7xl md:text-8xl font-bold heading-font leading-none mb-8 neon-text">
+                POWERFUL FLEET.<br>INTELLIGENT WAREHOUSES.
+            </h1>
+            
+            <p class="text-2xl max-w-3xl mx-auto text-zinc-300 mb-12">
+                Reliable transportation • AI-powered warehousing • Real-time supply chain intelligence
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <a href="#book" class="group inline-flex items-center justify-center gap-4 bg-gradient-to-r from-amber-400 to-yellow-500 hover:from-amber-500 hover:to-yellow-600 text-black font-bold text-2xl px-12 py-7 rounded-3xl transition-all hover:scale-105">
+                    <i class="fas fa-truck"></i>
+                    BOOK YOUR TRUCK
+                </a>
+                <a href="#warehouse" class="group inline-flex items-center justify-center gap-4 border border-white/40 hover:border-white text-white font-semibold text-xl px-10 py-7 rounded-3xl transition-all hover:bg-white/10">
+                    <i class="fas fa-cube"></i>
+                    WAREHOUSE SERVICES
                 </a>
             </div>
         </div>
     </section>
 
     <!-- SERVICES -->
-    <section id="services" class="py-20 bg-white">
+    <section id="services" class="py-24 section-animate">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-center text-5xl font-bold heading-font mb-16">Our Services</h2>
+            <h2 class="text-center text-6xl heading-font mb-4">OUR FLEET & SERVICES</h2>
+            <p class="text-center text-zinc-400 text-xl max-w-xl mx-auto mb-16">Heavy-duty diesel trucks backed by AI intelligence</p>
+            
             <div class="grid md:grid-cols-4 gap-8">
-                <div class="text-center">
-                    <div class="w-20 h-20 mx-auto bg-amber-100 rounded-2xl flex items-center justify-center text-4xl mb-6">🚛</div>
-                    <h3 class="font-semibold text-xl">Full Truck Load (FTL)</h3>
+                <div class="truck-card bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-amber-400/50">
+                    <div class="text-6xl mb-6">🚛</div>
+                    <h3 class="text-2xl font-semibold mb-2">Full Truck Load</h3>
+                    <p class="text-zinc-400">Reliable diesel FTL across India</p>
                 </div>
-                <div class="text-center">
-                    <div class="w-20 h-20 mx-auto bg-amber-100 rounded-2xl flex items-center justify-center text-4xl mb-6">📦</div>
-                    <h3 class="font-semibold text-xl">Less Than Truck Load (LTL)</h3>
+                <div class="truck-card bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-amber-400/50">
+                    <div class="text-6xl mb-6">📦</div>
+                    <h3 class="text-2xl font-semibold mb-2">Less Than Truck Load</h3>
+                    <p class="text-zinc-400">Efficient shared diesel logistics</p>
                 </div>
-                <div class="text-center">
-                    <div class="w-20 h-20 mx-auto bg-amber-100 rounded-2xl flex items-center justify-center text-4xl mb-6">🏭</div>
-                    <h3 class="font-semibold text-xl">Warehousing</h3>
+                <div class="truck-card bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-amber-400/50">
+                    <div class="text-6xl mb-6">🏭</div>
+                    <h3 class="text-2xl font-semibold mb-2">AI Warehouses</h3>
+                    <p class="text-zinc-400">Smart storage & fulfillment</p>
                 </div>
-                <div class="text-center">
-                    <div class="w-20 h-20 mx-auto bg-amber-100 rounded-2xl flex items-center justify-center text-4xl mb-6">🤖</div>
-                    <h3 class="font-semibold text-xl">AI Logistics</h3>
+                <div class="truck-card bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-amber-400/50">
+                    <div class="text-6xl mb-6">🧠</div>
+                    <h3 class="text-2xl font-semibold mb-2">AI Optimization</h3>
+                    <p class="text-zinc-400">Route & inventory intelligence</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- TRUCK BOOKING + CALCULATOR -->
-    <section id="book" class="py-20 bg-gray-100">
+    <!-- BOOKING -->
+    <section id="book" class="py-24 bg-zinc-900 section-animate">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid lg:grid-cols-2 gap-12">
-                <!-- Booking Form -->
-                <div class="bg-white rounded-3xl p-10 shadow-xl">
-                    <h2 class="text-4xl font-bold mb-8">Book Your Truck</h2>
-                    <form id="booking-form" class="space-y-6">
+                <!-- Form -->
+                <div class="bg-zinc-950 border border-zinc-800 rounded-3xl p-10">
+                    <h2 class="text-5xl heading-font mb-8">Book Your Truck</h2>
+                    
+                    <div class="space-y-8">
                         <div class="grid grid-cols-2 gap-6">
                             <div>
-                                <label class="block text-sm font-medium mb-2">From</label>
-                                <input type="text" id="from" placeholder="Chennai" class="w-full px-5 py-4 border rounded-2xl">
+                                <label class="block text-xs tracking-widest mb-2 text-zinc-400">FROM</label>
+                                <input type="text" id="from" value="Chennai" class="input-focus w-full bg-zinc-900 border border-zinc-700 rounded-2xl px-6 py-5 focus:outline-none">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium mb-2">To</label>
-                                <input type="text" id="to" placeholder="Bangalore" class="w-full px-5 py-4 border rounded-2xl">
+                                <label class="block text-xs tracking-widest mb-2 text-zinc-400">TO</label>
+                                <input type="text" id="to" value="Bangalore" class="input-focus w-full bg-zinc-900 border border-zinc-700 rounded-2xl px-6 py-5 focus:outline-none">
                             </div>
                         </div>
-                        
+
                         <div>
-                            <label class="block text-sm font-medium mb-2">Truck Type</label>
-                            <select id="truck-type" class="w-full px-5 py-4 border rounded-2xl">
-                                <option value="small">Small (1 Ton) - ₹8/km</option>
-                                <option value="medium">Medium (5 Ton) - ₹14/km</option>
-                                <option value="large">Large (10+ Ton) - ₹22/km</option>
+                            <label class="block text-xs tracking-widest mb-2 text-zinc-400">TRUCK TYPE (Diesel)</label>
+                            <select id="truck-type" class="input-focus w-full bg-zinc-900 border border-zinc-700 rounded-2xl px-6 py-5 focus:outline-none">
+                                <option value="small">Small (2 Ton) - ₹18/km</option>
+                                <option value="medium">Medium (8 Ton) - ₹26/km</option>
+                                <option value="large">Heavy (20+ Ton) - ₹35/km</option>
                             </select>
                         </div>
-                        
+
                         <div class="grid grid-cols-2 gap-6">
                             <div>
-                                <label class="block text-sm font-medium mb-2">Weight (kg)</label>
-                                <input type="number" id="weight" value="2500" class="w-full px-5 py-4 border rounded-2xl">
+                                <label class="block text-xs tracking-widest mb-2 text-zinc-400">WEIGHT (TONS)</label>
+                                <input type="number" id="weight" value="5" class="input-focus w-full bg-zinc-900 border border-zinc-700 rounded-2xl px-6 py-5 focus:outline-none">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium mb-2">Distance (km)</label>
-                                <input type="number" id="distance" value="320" class="w-full px-5 py-4 border rounded-2xl">
+                                <label class="block text-xs tracking-widest mb-2 text-zinc-400">DISTANCE (KM)</label>
+                                <input type="number" id="distance" value="320" class="input-focus w-full bg-zinc-900 border border-zinc-700 rounded-2xl px-6 py-5 focus:outline-none">
                             </div>
                         </div>
-                        
-                        <button type="button" onclick="calculateAndBook()" 
-                                class="w-full bg-gradient-to-r from-blue-900 to-amber-600 text-white py-6 rounded-3xl font-bold text-xl">
-                            CALCULATE &amp; BOOK
+
+                        <button onclick="calculateAndBook()" 
+                                class="w-full bg-gradient-to-r from-amber-400 to-yellow-500 text-black font-bold py-7 rounded-3xl text-xl tracking-wider hover:brightness-110 transition-all">
+                            CALCULATE & BOOK
                         </button>
-                    </form>
+                    </div>
                 </div>
-                
-                <!-- Live Result -->
-                <div id="result-panel" class="hidden bg-white rounded-3xl p-10 shadow-xl border border-amber-200">
-                    <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
-                        <i class="fas fa-check-circle text-green-500"></i> Booking Summary
+
+                <!-- Result -->
+                <div id="result-panel" class="hidden bg-zinc-950 border border-amber-400/30 rounded-3xl p-10">
+                    <h3 class="flex items-center gap-3 text-2xl mb-8">
+                        <i class="fas fa-truck text-amber-400"></i>
+                        BOOKING SUMMARY
                     </h3>
-                    <div id="fare-result" class="space-y-6"></div>
+                    <div id="fare-result" class="space-y-8"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- AI LOGISTICS -->
-    <section id="ai" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-5xl font-bold heading-font mb-4">AI-Powered Logistics Management</h2>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto">Our intelligent system optimizes routes, predicts delays, and manages your entire supply chain.</p>
+    <!-- WAREHOUSE -->
+    <section id="warehouse" class="py-24 section-animate">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-6xl heading-font mb-4">AI POWERED WAREHOUSES</h2>
+                <p class="text-xl text-zinc-400">Advanced storage integrated with our diesel fleet</p>
+            </div>
             
-            <div class="mt-16 bg-gray-900 text-white rounded-3xl p-12 max-w-3xl mx-auto">
-                <div class="flex justify-center gap-8 text-6xl mb-8">
-                    <i class="fas fa-brain"></i>
-                    <i class="fas fa-map-marked-alt"></i>
-                    <i class="fas fa-chart-line"></i>
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="glass rounded-3xl p-10 truck-card">
+                    <div class="text-7xl mb-8">🏭</div>
+                    <h3 class="text-3xl font-semibold mb-4">Robotic Operations</h3>
+                    <p class="text-zinc-400">Automated handling & sorting</p>
                 </div>
-                <p class="text-2xl font-medium">"Your shipment is currently 12 minutes ahead of schedule. ETA: 4:45 PM"</p>
-                <button onclick="simulateAI()" 
-                        class="mt-10 px-8 py-4 bg-amber-500 text-black font-bold rounded-2xl">
-                    Talk to AI Agent →
+                <div class="glass rounded-3xl p-10 truck-card">
+                    <div class="text-7xl mb-8">📊</div>
+                    <h3 class="text-3xl font-semibold mb-4">Predictive Management</h3>
+                    <p class="text-zinc-400">Smart inventory forecasting</p>
+                </div>
+                <div class="glass rounded-3xl p-10 truck-card">
+                    <div class="text-7xl mb-8">🔍</div>
+                    <h3 class="text-3xl font-semibold mb-4">Quality Control</h3>
+                    <p class="text-zinc-400">AI vision inspection system</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI -->
+    <section id="ai" class="py-24 bg-zinc-900 section-animate">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-6xl heading-font mb-6">NEURAL AI PLATFORM</h2>
+            <p class="text-zinc-400 text-2xl mb-16">Optimizing your diesel fleet & warehouse operations</p>
+            
+            <div class="glass rounded-3xl p-16">
+                <div class="flex justify-center gap-12 text-8xl mb-12 opacity-80">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <p class="text-3xl font-light">"Fleet running smoothly. Warehouse inventory is well-balanced."</p>
+                <button onclick="simulateAI()" class="mt-12 px-12 py-6 bg-white text-black font-semibold rounded-3xl hover:bg-amber-400 transition-colors">
+                    TALK TO AI AGENT
                 </button>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-blue-950 text-gray-300 py-12">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <p class="text-sm">© 2026 RST Trans Connect Pvt Ltd • A Subsidiary of RST Group</p>
+    <footer class="bg-black py-16 border-t border-zinc-800">
+        <div class="max-w-7xl mx-auto px-6 text-center text-zinc-500 text-sm">
+            © 2026 RST Neural Logistics • Diesel Fleet & Intelligent Warehousing
         </div>
     </footer>
 
     <script>
+        // Intersection Observer for animations
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.section-animate, .truck-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            elements.forEach(el => observer.observe(el));
+        }
+
         function calculateAndBook() {
             const type = document.getElementById('truck-type').value;
             const weight = parseFloat(document.getElementById('weight').value) || 0;
@@ -181,42 +301,44 @@
             let rate = 0;
             let name = '';
             
-            if (type === 'small') { rate = 15; name = 'Small Truck (1T)'; }
-            else if (type === 'medium') { rate = 25; name = 'Medium Truck (5T)'; }
-            else { rate = 45; name = 'Large Truck (10T+)'; }
+            if (type === 'small') { rate = 18; name = 'Small Diesel (2T)'; }
+            else if (type === 'medium') { rate = 26; name = 'Medium Diesel (8T)'; }
+            else { rate = 35; name = 'Heavy Diesel (20T+)'; }
             
             const fare = Math.round(rate * distance);
             
             const html = `
-                <div class="text-center">
-                    <p class="text-5xl font-bold text-amber-600">₹${fare}</p>
-                    <p class="text-sm text-gray-500">Estimated Fare</p>
+                <div class="text-center mb-10">
+                    <p class="text-7xl font-bold text-amber-400">₹${fare}</p>
+                    <p class="text-amber-400/70 text-sm tracking-widest">ESTIMATED FARE</p>
                 </div>
-                <div class="grid grid-cols-2 gap-8 mt-8 text-left">
-                    <div><strong>Truck:</strong> ${name}</div>
-                    <div><strong>Distance:</strong> ${distance} km</div>
-                    <div><strong>Weight:</strong> ${weight} kg</div>
-                    <div><strong>From → To:</strong> ${document.getElementById('from').value} → ${document.getElementById('to').value}</div>
+                <div class="grid grid-cols-2 gap-y-6 text-sm">
+                    <div class="font-medium">Truck</div><div class="text-right">${name}</div>
+                    <div class="font-medium">Distance</div><div class="text-right">${distance} km</div>
+                    <div class="font-medium">Weight</div><div class="text-right">${weight} tons</div>
+                    <div class="font-medium">ETA</div><div class="text-right text-emerald-400">~12-18 hrs</div>
                 </div>
-                <button onclick="confirmBooking()" 
-                        class="mt-10 w-full bg-green-600 hover:bg-green-700 py-5 rounded-2xl text-white font-bold">
-                    CONFIRM BOOKING
-                </button>
+                <div class="mt-12 pt-8 border-t border-zinc-800">
+                    <button onclick="confirmBooking()" class="w-full bg-emerald-600 hover:bg-emerald-500 py-5 rounded-2xl font-semibold">CONFIRM BOOKING</button>
+                </div>
             `;
             
             document.getElementById('fare-result').innerHTML = html;
             document.getElementById('result-panel').classList.remove('hidden');
         }
-        
+
         function confirmBooking() {
-            alert("🎉 Booking Confirmed!\n\nYour truck has been assigned. Tracking link sent to your registered mobile.");
+            alert("✅ Booking Confirmed!\n\nDiesel truck assigned. Real-time tracking activated.");
         }
-        
+
         function simulateAI() {
-            alert("🤖 AI Agent: Good afternoon! Your consignment from Chennai to Bangalore is on route NH48. Current fuel efficiency is optimal. Any assistance needed?");
+            alert("🧠 Neural AI: Your diesel fleet is performing optimally. Warehouse inventory is well-balanced. Need route adjustments?");
         }
-        
-        // Tailwind ready
+
+        // Initialize animations
+        window.onload = () => {
+            animateOnScroll();
+        };
     </script>
 </body>
 </html>
